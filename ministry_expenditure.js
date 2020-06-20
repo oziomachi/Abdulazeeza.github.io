@@ -1,5 +1,7 @@
 const ctx = document.getElementById('graph_canvas').getContext('2d');
-let chart = new Chart(ctx, {
+
+//the new object helps plot a line chart from chart.js  
+let chart = new Chart(ctx, { 
     // The type of chart we want to create
     type: 'line',
 
@@ -41,7 +43,7 @@ let chart = new Chart(ctx, {
               color: "#ddd"
             },
             ticks: {
-                fontSize: 15,
+                fontSize: 11,
                 fontColor: "black",
                 beginAtZero: false,     
             }

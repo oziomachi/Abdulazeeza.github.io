@@ -90,11 +90,26 @@ const add_keyNames = (json_data)=>{
 const create_link_to_twitter = (username) =>{
   window.open(`https://twitter.com/${username}`,"_blank");
 }
+const toggle_filter =()=>{
+  if($('.filter_option').css('height') == '40px'){
+    $('.filter_option').css('height', '0px');
+     $('.filter_option').css('width', '0px');
+     $('.filter_option').css('border', 'none');
+  }else{
+    $('.filter_option').css('height', '40px');
+    $('.filter_option').css('width', '230px');
+    $('.filter_option').css('border', '1px solid #ddd');
+  }
+}
 $(document).on("click", ".ministry_twitter_handle_link", function(){
   username = $(this).html();
   str = `${username}*`.slice(1,-1);
   create_link_to_twitter(str);
 });
+$(document).on("click", ".table_filter", toggle_filter);
+
+
+//draw line chart
 const ctx = document.getElementById('graph_canvas').getContext('2d');
 //the new object helps plot a line chart from chart.js  
 let chart = new Chart(ctx, { 
@@ -162,13 +177,3 @@ let chart = new Chart(ctx, {
 });
 add_ministry_list(data);
 add_keyNames(data);
-
-
-/*
-data
-  .sort((m1, m2) => m1.amount - m2.amount)
-  .slice(0, 10)
-  .forEach((topMinistry, index) => {
-    document.querySelector(`#rank${index + 1}`).innerHTML =
-      topMinistry.ministry;
-});*/

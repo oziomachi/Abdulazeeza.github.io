@@ -179,6 +179,7 @@ add_ministry_list(data);
 add_keyNames(data);
 
 function myFunction(value) {
+  event.preventDefault()
   if(value == 'highLow') {
     chart.data.datasets[0].data.sort((a, b) => {return a - b})
     chart.update()

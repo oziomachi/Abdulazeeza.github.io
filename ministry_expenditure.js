@@ -153,3 +153,4 @@ data
     document.querySelector(`#rank${index + 1}`).innerHTML =
       topMinistry.ministry;
 });
+

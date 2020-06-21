@@ -177,3 +177,15 @@ let chart = new Chart(ctx, {
 });
 add_ministry_list(data);
 add_keyNames(data);
+
+function myFunction(value) {
+  if(value == 'highLow') {
+    chart.data.datasets[0].data.sort((a, b) => {return a - b})
+    chart.update()
+    return
+ } else {
+   chart.data.datasets[0].data.sort((a, b) => {return b - a})
+    chart.update()
+    return
+ }
+}

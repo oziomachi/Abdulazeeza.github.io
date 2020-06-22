@@ -9,14 +9,15 @@
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
   crossorigin="anonymous"
-/>
-	<title>Ministry Expenditure Report</title>
+/>	
 	<link rel="stylesheet" type="text/css" href="css/ministry_expenditure.css">
   <link rel="stylesheet" type="text/css" href="css/header.css">
   <link rel="stylesheet" type="text/css" href="css/footer.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+	
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <title>Ministry Expenditure Report</title>
 </head>
 <body>
   <!-- navbar -->
@@ -117,13 +118,16 @@
        </div>
       </div>
       <div>
-        <table class="main_table">
-          <tr class="ministry_list_table_header">
-            <th>Ministry</th>
-            <th>Minister</th>
-            <th>Twitter</th>
-            <th>Amount</th>
-          </tr>
+        <table id="data-table" class="main_table table table-stripped">
+          <thead>
+            <tr class="ministry_list_table_header">
+              <th>Ministry</th>
+              <th>Minister</th>
+              <th>Twitter</th>
+              <th>Amount</th>
+            </tr>
+        </thead>
+          <tbody></tbody>
         </table>
       </div>
       <div class="filter_option">
@@ -132,6 +136,221 @@
     </div>
   </div>
   <!--=========================Ending of Ministry list section========================-->
+     <!-- Comment -->
+ 
+<section class="comment-container">
+	<div class="comment-wrapper">
+		<div class="comment-image">
+			<img class="comment-profile-image" src="img\comment-profile-image.png" alt="user avatar">
+		</div>
+		<div class="writeup-container">
+			<div class="name-time-options">
+				<div class="name-time">
+					<p class="comment-name">James Emmanuel</p>
+					<p class="comment-time">2h ago</p>
+				</div>
+				<div class="comment-option comment-options active">
+               <svg width="26" height="6" viewBox="0 0 26 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="3.66244" cy="3.1067" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                  <ellipse cx="13.1195" cy="3.10651" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                  <ellipse cx="22.5765" cy="3.10651" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+               </svg>
+				</div>
+			</div>
+			<div class="comment-write-up">
+				<p class="comment-content">This is so nice to read, I can see the improvement in this sector this is really encouraging.
+					 Kudos !!! 
+				</p>
+			</div>
+			<div class="comment-reactions">
+				<div class="comment-like">
+					<svg class="like-image" width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.90873 14.308H2.88224C2.52394 14.308 2.18031 14.1658 1.92695 13.9125C1.67359 13.6593 1.53125 13.3159 1.53125 12.9578V8.23188C1.53125 7.87377 1.67359 7.53033 1.92695 7.2771C2.18031 7.02388 2.52394 6.88162 2.88224 6.88162H4.90873M9.63721 5.53137V2.83086C9.63721 2.2937 9.42371 1.77853 9.04366 1.3987C8.66362 1.01887 8.14818 0.805481 7.61072 0.805481L4.90873 6.88162V14.308H12.5283C12.8541 14.3117 13.1703 14.1976 13.4186 13.9867C13.6668 13.7758 13.8305 13.4823 13.8793 13.1603L14.8115 7.08416C14.8409 6.89064 14.8278 6.69305 14.7732 6.50507C14.7186 6.3171 14.6238 6.14323 14.4953 5.99553C14.3668 5.84782 14.2077 5.72981 14.029 5.64966C13.8503 5.56952 13.6564 5.52915 13.4605 5.53137H9.63721Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+					<p class="like-number">23</p>
+				</div>
+				<div class="comment-dislike">
+					<svg class="dislike-image" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.9874 1.47961H12.791C13.1733 1.47286 13.5448 1.60663 13.8349 1.85554C14.1251 2.10445 14.3136 2.45116 14.3649 2.82987V7.55576C14.3136 7.93446 14.1251 8.28118 13.8349 8.53009C13.5448 8.779 13.1733 8.91277 12.791 8.90601H10.9874M6.25894 10.2563V12.9568C6.25894 13.4939 6.47244 14.0091 6.85248 14.3889C7.23252 14.7688 7.74797 14.9822 8.28543 14.9822L10.9874 8.90601V1.47961H3.36781C3.042 1.47593 2.72584 1.59006 2.47757 1.80097C2.22931 2.01188 2.06567 2.30536 2.01682 2.62733L1.08463 8.70347C1.05525 8.89699 1.0683 9.09459 1.12291 9.28256C1.17751 9.47054 1.27235 9.6444 1.40086 9.79211C1.52937 9.93981 1.68847 10.0578 1.86715 10.138C2.04582 10.2181 2.2398 10.2585 2.43563 10.2563H6.25894Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+					<p class="dislike-number">0</p>
+				</div>
+				<div class="comment-reply">
+					<svg class="reply-image" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.2605 7.21913C13.2628 8.11021 13.0545 8.98923 12.6526 9.78461C12.1759 10.7377 11.4432 11.5394 10.5365 12.0998C9.62981 12.6602 8.58488 12.9573 7.51878 12.9577C6.62721 12.96 5.74771 12.7518 4.95189 12.3501L1.10156 13.6328L2.38501 9.78461C1.98304 8.98923 1.77473 8.11021 1.77706 7.21913C1.77747 6.15361 2.07469 5.10926 2.63543 4.20303C3.19616 3.29681 3.99826 2.56451 4.95189 2.08816C5.74771 1.68642 6.62721 1.47823 7.51878 1.48055H7.85653C9.2645 1.55818 10.5943 2.15214 11.5914 3.14869C12.5885 4.14525 13.1828 5.47436 13.2605 6.88156V7.21913Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+					<p class="reply-number">Reply</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="comment-wrapper">
+		<div class="comment-image">
+			<img class="comment-profile-image" src="img\comment-profile-image.png" alt="user avatar">
+		</div>
+		<div class="writeup-container">
+			<div class="name-time-options">
+				<div class="name-time">
+					<p class="comment-name">James Emmanuel</p>
+					<p class="comment-time">2h ago</p>
+				</div>
+				<div class="comment-option comment-options active">
+               <svg width="26" height="6" viewBox="0 0 26 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="3.66244" cy="3.1067" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                  <ellipse cx="13.1195" cy="3.10651" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                  <ellipse cx="22.5765" cy="3.10651" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+               </svg>
+				</div>
+			</div>
+			<div class="comment-write-up">
+				<p class="comment-content">This is so nice to read, I can see the improvement in this sector this is really encouraging.
+					 Kudos !!! 
+				</p>
+			</div>
+			<div class="comment-reactions">
+				<div class="comment-like">
+					<svg class="like-image" width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.90873 14.308H2.88224C2.52394 14.308 2.18031 14.1658 1.92695 13.9125C1.67359 13.6593 1.53125 13.3159 1.53125 12.9578V8.23188C1.53125 7.87377 1.67359 7.53033 1.92695 7.2771C2.18031 7.02388 2.52394 6.88162 2.88224 6.88162H4.90873M9.63721 5.53137V2.83086C9.63721 2.2937 9.42371 1.77853 9.04366 1.3987C8.66362 1.01887 8.14818 0.805481 7.61072 0.805481L4.90873 6.88162V14.308H12.5283C12.8541 14.3117 13.1703 14.1976 13.4186 13.9867C13.6668 13.7758 13.8305 13.4823 13.8793 13.1603L14.8115 7.08416C14.8409 6.89064 14.8278 6.69305 14.7732 6.50507C14.7186 6.3171 14.6238 6.14323 14.4953 5.99553C14.3668 5.84782 14.2077 5.72981 14.029 5.64966C13.8503 5.56952 13.6564 5.52915 13.4605 5.53137H9.63721Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+					<p class="like-number">23</p>
+				</div>
+				<div class="comment-dislike">
+					<svg class="dislike-image" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.9874 1.47961H12.791C13.1733 1.47286 13.5448 1.60663 13.8349 1.85554C14.1251 2.10445 14.3136 2.45116 14.3649 2.82987V7.55576C14.3136 7.93446 14.1251 8.28118 13.8349 8.53009C13.5448 8.779 13.1733 8.91277 12.791 8.90601H10.9874M6.25894 10.2563V12.9568C6.25894 13.4939 6.47244 14.0091 6.85248 14.3889C7.23252 14.7688 7.74797 14.9822 8.28543 14.9822L10.9874 8.90601V1.47961H3.36781C3.042 1.47593 2.72584 1.59006 2.47757 1.80097C2.22931 2.01188 2.06567 2.30536 2.01682 2.62733L1.08463 8.70347C1.05525 8.89699 1.0683 9.09459 1.12291 9.28256C1.17751 9.47054 1.27235 9.6444 1.40086 9.79211C1.52937 9.93981 1.68847 10.0578 1.86715 10.138C2.04582 10.2181 2.2398 10.2585 2.43563 10.2563H6.25894Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+					<p class="dislike-number">0</p>
+				</div>
+				<div class="comment-reply">
+					<svg class="reply-image" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.2605 7.21913C13.2628 8.11021 13.0545 8.98923 12.6526 9.78461C12.1759 10.7377 11.4432 11.5394 10.5365 12.0998C9.62981 12.6602 8.58488 12.9573 7.51878 12.9577C6.62721 12.96 5.74771 12.7518 4.95189 12.3501L1.10156 13.6328L2.38501 9.78461C1.98304 8.98923 1.77473 8.11021 1.77706 7.21913C1.77747 6.15361 2.07469 5.10926 2.63543 4.20303C3.19616 3.29681 3.99826 2.56451 4.95189 2.08816C5.74771 1.68642 6.62721 1.47823 7.51878 1.48055H7.85653C9.2645 1.55818 10.5943 2.15214 11.5914 3.14869C12.5885 4.14525 13.1828 5.47436 13.2605 6.88156V7.21913Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+					<p class="reply-number">Reply</p>
+				</div>
+			</div>
+
+			<div class="section-edit-delete">
+				<div class="edit-delete">
+					<p class="edit">Edit</p>
+					<p class="delete">Delete</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="comment-wrapper reply">
+		<div class="reply-container">
+			<div class="comment-image">
+				<img class="comment-profile-image" src="img\comment-profile-image.png" alt="user avatar">
+			</div>
+			<div class="writeup-container">
+				<div class="name-time-options">
+					<div class="name-time">
+						<p class="comment-name">James Emmanuel</p>
+						<p class="comment-time">2h ago</p>
+					</div>
+					<div class="comment-option comment-options active">
+                  <svg width="26" height="6" viewBox="0 0 26 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <ellipse cx="3.66244" cy="3.1067" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                     <ellipse cx="13.1195" cy="3.10651" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                     <ellipse cx="22.5765" cy="3.10651" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                  </svg>
+               </div>
+				</div>
+				<div class="comment-write-up">
+					<p class="comment-content">This is so nice to read, I can see the improvement in this sector this is really encouraging.
+						 Kudos !!! 
+					</p>
+				</div>
+				<div class="comment-reactions">
+					<div class="comment-like">
+						<svg class="like-image" width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M4.90873 14.308H2.88224C2.52394 14.308 2.18031 14.1658 1.92695 13.9125C1.67359 13.6593 1.53125 13.3159 1.53125 12.9578V8.23188C1.53125 7.87377 1.67359 7.53033 1.92695 7.2771C2.18031 7.02388 2.52394 6.88162 2.88224 6.88162H4.90873M9.63721 5.53137V2.83086C9.63721 2.2937 9.42371 1.77853 9.04366 1.3987C8.66362 1.01887 8.14818 0.805481 7.61072 0.805481L4.90873 6.88162V14.308H12.5283C12.8541 14.3117 13.1703 14.1976 13.4186 13.9867C13.6668 13.7758 13.8305 13.4823 13.8793 13.1603L14.8115 7.08416C14.8409 6.89064 14.8278 6.69305 14.7732 6.50507C14.7186 6.3171 14.6238 6.14323 14.4953 5.99553C14.3668 5.84782 14.2077 5.72981 14.029 5.64966C13.8503 5.56952 13.6564 5.52915 13.4605 5.53137H9.63721Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+						<p class="like-number">43</p>
+					</div>
+					<div class="comment-dislike">
+						<svg class="dislike-image" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M10.9874 1.47961H12.791C13.1733 1.47286 13.5448 1.60663 13.8349 1.85554C14.1251 2.10445 14.3136 2.45116 14.3649 2.82987V7.55576C14.3136 7.93446 14.1251 8.28118 13.8349 8.53009C13.5448 8.779 13.1733 8.91277 12.791 8.90601H10.9874M6.25894 10.2563V12.9568C6.25894 13.4939 6.47244 14.0091 6.85248 14.3889C7.23252 14.7688 7.74797 14.9822 8.28543 14.9822L10.9874 8.90601V1.47961H3.36781C3.042 1.47593 2.72584 1.59006 2.47757 1.80097C2.22931 2.01188 2.06567 2.30536 2.01682 2.62733L1.08463 8.70347C1.05525 8.89699 1.0683 9.09459 1.12291 9.28256C1.17751 9.47054 1.27235 9.6444 1.40086 9.79211C1.52937 9.93981 1.68847 10.0578 1.86715 10.138C2.04582 10.2181 2.2398 10.2585 2.43563 10.2563H6.25894Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+						<p class="dislike-number">4</p>
+					</div>
+					<div class="comment-reply">
+						<svg class="reply-image" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M13.2605 7.21913C13.2628 8.11021 13.0545 8.98923 12.6526 9.78461C12.1759 10.7377 11.4432 11.5394 10.5365 12.0998C9.62981 12.6602 8.58488 12.9573 7.51878 12.9577C6.62721 12.96 5.74771 12.7518 4.95189 12.3501L1.10156 13.6328L2.38501 9.78461C1.98304 8.98923 1.77473 8.11021 1.77706 7.21913C1.77747 6.15361 2.07469 5.10926 2.63543 4.20303C3.19616 3.29681 3.99826 2.56451 4.95189 2.08816C5.74771 1.68642 6.62721 1.47823 7.51878 1.48055H7.85653C9.2645 1.55818 10.5943 2.15214 11.5914 3.14869C12.5885 4.14525 13.1828 5.47436 13.2605 6.88156V7.21913Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+						<p class="reply-number">Reply</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="reply-wrapper">
+			<div class="comment-image">
+				<img class="comment-profile-image" src="img\comment-profile-image.png" alt="user avatar">
+			</div>
+			<div class="comments-reply">
+				<div class="name-time-options">
+					<div class="name-time">
+						<p class="comment-name small">James Emmanuel</p>
+						<p class="comment-time small">2h ago</p>
+					</div>
+					<div class="comment-option">
+                  <svg class="reply-comment-option" width="26" height="6" viewBox="0 0 26 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <ellipse cx="3.66244" cy="3.1067" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                     <ellipse cx="13.1195" cy="3.10651" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                     <ellipse cx="22.5765" cy="3.10651" rx="2.70199" ry="2.70051" fill="#D6D9DF"/>
+                  </svg>
+					</div>
+            </div>
+            <div class="reply-comment">
+               <div class="comment-write-up">
+                  <p class="comment-content small">Yeah totally agree. 
+                  </p>
+               </div>
+               <div class="comment-reactions">
+                  <div class="comment-like">
+                     <svg class="like-image" width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.90873 14.308H2.88224C2.52394 14.308 2.18031 14.1658 1.92695 13.9125C1.67359 13.6593 1.53125 13.3159 1.53125 12.9578V8.23188C1.53125 7.87377 1.67359 7.53033 1.92695 7.2771C2.18031 7.02388 2.52394 6.88162 2.88224 6.88162H4.90873M9.63721 5.53137V2.83086C9.63721 2.2937 9.42371 1.77853 9.04366 1.3987C8.66362 1.01887 8.14818 0.805481 7.61072 0.805481L4.90873 6.88162V14.308H12.5283C12.8541 14.3117 13.1703 14.1976 13.4186 13.9867C13.6668 13.7758 13.8305 13.4823 13.8793 13.1603L14.8115 7.08416C14.8409 6.89064 14.8278 6.69305 14.7732 6.50507C14.7186 6.3171 14.6238 6.14323 14.4953 5.99553C14.3668 5.84782 14.2077 5.72981 14.029 5.64966C13.8503 5.56952 13.6564 5.52915 13.4605 5.53137H9.63721Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                     <p class="like-number small">2</p>
+                  </div>
+                  <div class="comment-dislike">
+                     <svg class="dislike-image" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.9874 1.47961H12.791C13.1733 1.47286 13.5448 1.60663 13.8349 1.85554C14.1251 2.10445 14.3136 2.45116 14.3649 2.82987V7.55576C14.3136 7.93446 14.1251 8.28118 13.8349 8.53009C13.5448 8.779 13.1733 8.91277 12.791 8.90601H10.9874M6.25894 10.2563V12.9568C6.25894 13.4939 6.47244 14.0091 6.85248 14.3889C7.23252 14.7688 7.74797 14.9822 8.28543 14.9822L10.9874 8.90601V1.47961H3.36781C3.042 1.47593 2.72584 1.59006 2.47757 1.80097C2.22931 2.01188 2.06567 2.30536 2.01682 2.62733L1.08463 8.70347C1.05525 8.89699 1.0683 9.09459 1.12291 9.28256C1.17751 9.47054 1.27235 9.6444 1.40086 9.79211C1.52937 9.93981 1.68847 10.0578 1.86715 10.138C2.04582 10.2181 2.2398 10.2585 2.43563 10.2563H6.25894Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+                     </svg>
+                     <p class="dislike-number small">0</p>
+                  </div>
+                  <div class="comment-reply">
+                     <svg class="reply-image" width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.2605 7.21913C13.2628 8.11021 13.0545 8.98923 12.6526 9.78461C12.1759 10.7377 11.4432 11.5394 10.5365 12.0998C9.62981 12.6602 8.58488 12.9573 7.51878 12.9577C6.62721 12.96 5.74771 12.7518 4.95189 12.3501L1.10156 13.6328L2.38501 9.78461C1.98304 8.98923 1.77473 8.11021 1.77706 7.21913C1.77747 6.15361 2.07469 5.10926 2.63543 4.20303C3.19616 3.29681 3.99826 2.56451 4.95189 2.08816C5.74771 1.68642 6.62721 1.47823 7.51878 1.48055H7.85653C9.2645 1.55818 10.5943 2.15214 11.5914 3.14869C12.5885 4.14525 13.1828 5.47436 13.2605 6.88156V7.21913Z" stroke="black" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+                     </svg>
+                     <p class="reply-number small">Reply</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+		</div>
+	</div>
+	<div class="comment-input">
+		<input type="text" placeholder="Write  a  Comment">
+		<div class="images">
+			<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.4285 18.821C15.0324 18.821 18.7647 15.0691 18.7647 10.4409C18.7647 5.81269 15.0324 2.06079 10.4285 2.06079C5.82452 2.06079 2.09229 5.81269 2.09229 10.4409C2.09229 15.0691 5.82452 18.821 10.4285 18.821Z" stroke="#BCBDC1" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.09424 12.1168C7.09424 12.1168 8.34467 13.7928 10.4287 13.7928C12.5128 13.7928 13.7632 12.1168 13.7632 12.1168" stroke="#BCBDC1" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.92847 7.92676H7.93806" stroke="#BCBDC1" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.9299 7.92676H12.9395" stroke="#BCBDC1" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+         </svg>
+			<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.1714 2.89868H4.50073C3.57994 2.89868 2.8335 3.64906 2.8335 4.5747V16.3069C2.8335 17.2325 3.57994 17.9829 4.50073 17.9829H16.1714C17.0922 17.9829 17.8386 17.2325 17.8386 16.3069V4.5747C17.8386 3.64906 17.0922 2.89868 16.1714 2.89868Z" stroke="#BCBDC1" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7.4187 8.76489C8.10906 8.76489 8.6687 8.2021 8.6687 7.50787C8.6687 6.81364 8.10906 6.25085 7.4187 6.25085C6.72835 6.25085 6.1687 6.81364 6.1687 7.50787C6.1687 8.2021 6.72835 8.76489 7.4187 8.76489Z" stroke="#BCBDC1" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17.8394 12.9548L13.6713 8.76477L4.50146 17.9829" stroke="#BCBDC1" stroke-width="1.35139" stroke-linecap="round" stroke-linejoin="round"/>
+         </svg>
+		</div>
+	</div>
+</section>
+
 
 
   <footer>
@@ -171,23 +390,13 @@
             </ul>
         </div>
     </footer>
-    <script>
-      $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-          var value = $(this).val().toLowerCase();
-          $(".main_table tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-          });
-        });
-      });
-    </script>
-    <script type="text/javascript" src="js/ministry_expenditure.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script
+    
+    <!-- <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -198,5 +407,9 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script type="text/javascript" src="js/ministry_expenditure.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

@@ -1,3 +1,12 @@
+ $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $(".main_table tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+          });
+        });
+      });
+      
 const data = [
   {
     ministry: "Water Resources",
@@ -62,18 +71,26 @@ const data = [
 ];
 
 const add_ministry_list = (json_data)=>{
-  for (let item of json_data) {
-    let amountInNaira = new Intl.NumberFormat("en-ng", {
-        style: "currency",
-        currency: "NGN",
-      }).format(item.amount);
-    ministry_list = document.createElement('tr');
-    ministry_list.className = 'ministry_list';
-    ministry_list.innerHTML = `<td class="ministry_name">${item.ministry}</td>
-        <td>${item.minister}</td>
-        <td><a class="ministry_twitter_handle_link">@${item.twitter}</a></td>
-        <td class="ministry_list_amount">${amountInNaira}</td>`;
-    $('.main_table').append(ministry_list);
+  debugger
+  console.log(json_data)
+  let ministry_list = '';
+  if(json_data.length > 0 && Array.isArray(json_data)) {
+    for (let item of json_data) {
+      let amountInNaira = new Intl.NumberFormat("en-ng", {
+          style: "currency",
+          currency: "NGN",
+        }).format(item.amount);
+      // ministry_list.className = 'ministry_list';
+      let row = `<tr>
+                    <td class="ministry_name">${item.ministry}</td>
+                    <td>${item.minister}</td>
+                    <td><a class="ministry_twitter_handle_link">@${item.twitter}</a></td>
+                    <td class="ministry_list_amount">${amountInNaira}</td>      
+                  </tr>`;
+                ministry_list += row;
+    }
+     $('#data-table > tbody').append(ministry_list);
+  $("#data-table").DataTable()
   }
 }
 const add_keyNames = (json_data)=>{
@@ -178,15 +195,21 @@ let chart = new Chart(ctx, {
 add_ministry_list(data);
 add_keyNames(data);
 
+// function myFunction(value) {
+//   event.preventDefault()
+//   if(value == 'lowHigh') {
+//     chart.data.datasets[0].data.sort((a, b) => {return a - b})
+//     chart.update()
+//     return
+//  } else {
+//    chart.data.datasets[0].data.sort((a, b) => {return b - a})
+//     chart.update()
+//     return
+//  }
+// }
 function myFunction(value) {
   event.preventDefault()
-  if(value == 'lowHigh') {
-    chart.data.datasets[0].data.sort((a, b) => {return a - b})
-    chart.update()
-    return
- } else {
-   chart.data.datasets[0].data.sort((a, b) => {return b - a})
-    chart.update()
-    return
- }
+  value == 'lowHigh' ?  chart.data.datasets[0].data.sort((a, b) => {return a - b}) :  chart.data.datasets[0].data.sort((a, b) => {return b - a}) 
+   chart.update()
+   return0
 }
